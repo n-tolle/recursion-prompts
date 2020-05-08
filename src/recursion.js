@@ -572,6 +572,29 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  let altArr = [];
+  if (array.length === 0){
+    return [];
+  } else if (array.length === 1){
+    if (array[0] >= 0){
+      altArr.push(array[0]);
+    } else {
+      altArr.push(-array[0]);
+    }
+    return altArr;
+  } else {
+    if (array[0] >= 0){
+      altArr.push(array[0]);
+    } else {
+      altArr.push(-array[0]);
+    }
+    if (array[1] <= 0){
+      altArr.push(array[1]);
+    } else {
+      altArr.push(-array[1]);
+    }
+    return altArr.concat(alternateSign(array.slice(2)));
+  }
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
